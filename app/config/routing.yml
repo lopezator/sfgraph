@@ -1,0 +1,7 @@
+graphql:
+    resource: "@GraphQLBundle/Controller/"
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
