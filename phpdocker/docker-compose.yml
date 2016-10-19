@@ -12,12 +12,12 @@ sfgraph-mysql:
     - MYSQL_USER=sfgraph
     - MYSQL_PASSWORD=sfgraph
 
-sfgraph-webserver:
+sfgraph-nginx:
   image: phpdockerio/nginx:latest
-  container_name: sfgraph-webserver
+  container_name: sfgraph-nginx
   volumes:
       - ..:/var/www/sfgraph
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./conf/containers/sfgraph-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
   links:
    - sfgraph-php-fpm
   ports:
@@ -25,11 +25,12 @@ sfgraph-webserver:
 
 sfgraph-php-fpm:
   build: .
-  dockerfile: php-fpm/Dockerfile
+  dockerfile: conf/containers/sfgraph-php-fpm/Dockerfile
   container_name: sfgraph-php-fpm
   volumes:
     - ..:/var/www/sfgraph
-    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
-    - ./php-fpm/xdebug-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/20-xdebug.ini
+    - ./conf/containers/sfgraph-php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
+    - ./conf/containers/sfgraph-php-fpm/xdebug-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/20-xdebug.ini
+    - ./conf/system/sources-list-overrides.ini:/etc/apt/sources.list
   links:
     - sfgraph-mysql
