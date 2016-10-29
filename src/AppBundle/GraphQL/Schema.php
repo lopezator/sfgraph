@@ -28,6 +28,5 @@ class Schema extends AbstractSchema
             ]
         ]);
     }
-
 }
 

@@ -2,7 +2,6 @@
 #                          Generated on phpdocker.io                          #
 #                  Little modifications by David López (@lopezator)           #
 ###############################################################################
-
 sfgraph-mysql:
   image: mysql:5.7
   container_name: sfgraph-mysql
@@ -11,6 +10,10 @@ sfgraph-mysql:
     - MYSQL_DATABASE=sfgraph
     - MYSQL_USER=sfgraph
     - MYSQL_PASSWORD=sfgraph
+  ports:
+    - 8306:3306
+  volumes:
+    - /var/lib/mysql/sfgraph:/var/lib/mysql
 
 sfgraph-nginx:
   image: phpdockerio/nginx:latest
