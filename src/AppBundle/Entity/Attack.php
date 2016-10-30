@@ -28,7 +28,6 @@ class Attack
      */
     private $name;
 
-
     /**
      * Get id
      *
@@ -63,4 +62,3 @@ class Attack
         return $this->name;
     }
 }
-

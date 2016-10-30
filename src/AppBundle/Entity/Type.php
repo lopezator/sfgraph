@@ -28,7 +28,6 @@ class Type
      */
     private $name;
 
-
     /**
      * Get id
      *
@@ -63,4 +62,3 @@ class Type
         return $this->name;
     }
 }
-
