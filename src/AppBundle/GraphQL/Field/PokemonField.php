@@ -24,8 +24,8 @@ class PokemonField extends AbstractContainerAwareField
     public function resolve($value, array $args, ResolveInfo $info)
     {
         $em = $this->container->get('doctrine')->getManager();
-        $repository = $em->getRepository("AppBundle:Pokemon");
+        $pokemon = $em->getRepository("AppBundle:Pokemon")->find($args["id"]);
 
-        return $repository->find($args["id"]);
+        return json_decode($this->container->get('serializer')->serialize($pokemon, 'json'), true);
     }
 }

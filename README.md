@@ -15,6 +15,9 @@ http://sfgraph.dev:8080/app_dev.php/graphql?query={hello}
 * 2.- This call additionally send the name arg to change the default value (Stranger) of the GraphQL/Schema.php file
 http://sfgraph.dev:8080/app_dev.php/graphql?query={hello(name:paco)}
 
+* 3.- Pokemon call
+http://sfgraph.dev:8080/app_dev.php/graphql?query={pokemon(id: 11){name, type, attacks, evolution}}
+
 GraphQL explorer
 ================
 
