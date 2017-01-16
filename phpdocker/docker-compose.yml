@@ -20,7 +20,7 @@ sfgraph-nginx:
   container_name: sfgraph-nginx
   volumes:
       - ..:/var/www/sfgraph
-      - ./conf/containers/sfgraph-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
   links:
    - sfgraph-php-fpm
   ports:
@@ -28,12 +28,11 @@ sfgraph-nginx:
 
 sfgraph-php-fpm:
   build: .
-  dockerfile: conf/containers/sfgraph-php-fpm/Dockerfile
+  dockerfile: php-fpm/Dockerfile
   container_name: sfgraph-php-fpm
   volumes:
     - ..:/var/www/sfgraph
-    - ./conf/containers/sfgraph-php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
-    - ./conf/containers/sfgraph-php-fpm/xdebug-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/20-xdebug.ini
-    - ./conf/system/sources-list-overrides.ini:/etc/apt/sources.list
+    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
+    - ./php-fpm/xdebug-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/20-xdebug.ini
   links:
     - sfgraph-mysql
